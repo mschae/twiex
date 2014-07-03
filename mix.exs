@@ -4,7 +4,7 @@ defmodule Twiex.Mixfile do
   def project do
     [app: :twiex,
      version: "0.0.1",
-     elixir: "~> 0.13.3",
+     elixir: "~> 0.14.2",
      deps: deps]
   end
 
@@ -27,8 +27,10 @@ defmodule Twiex.Mixfile do
   # Type `mix help deps` for more examples and options
   defp deps do
     [
-      { :httpotion, github: "myfreeweb/httpotion" },
-      { :oauthex,  github: "marcelog/oauthex" }
+      { :httpoison, github: "edgurgel/httpoison" },
+      { :exauth,    path: "../exauth" },
+      { :jsex,      github: "talentdeficit/jsex" },
+      { :exlager,   github: "khia/exlager" },
     ]
   end
 end

@@ -1,14 +1,18 @@
 defmodule Twiex.Receiver do
-  def init(_) do
-    receive do
-      {:ok, {_, chunk, _}} -> IO.puts chunk.chunk
+  def handle( chunk ) do
+    IO.puts "---"
+    IO.puts chunk
+    IO.puts "---"
+
+    if is_bitstring(chunk) do
+      IO.puts 'bistring'
+    else
+      IO.puts 'no bitstring'
     end
 
-    {:ok, []}
-  end
 
-  def start_link(opts \\ []) do
-    IO.puts 'test1'
-    GenServer.start_link(__MODULE__, opts)
+    {:ok, map} = JSEX.decode chunk
+
+    IO.puts 'ok'
   end
 end

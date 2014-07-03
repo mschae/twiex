@@ -6,10 +6,12 @@ defmodule Twiex do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
 
+    Code.load_file "config/twitter.exs"
+
     children = [
       # Define workers and child supervisors to be supervised
       # worker(Twiex.Worker, [arg1, arg2, arg3])
-      worker(Twiex.Listener, [])
+      worker(Twiex.Listener, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/Supervisor.html
